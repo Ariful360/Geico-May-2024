@@ -2,7 +2,10 @@ package baseUtil;
 
 import java.lang.reflect.Method;
 import java.time.Duration;
+
+import pages.Boats;
 import pages.HomePage;
+import pages.Renters;
 import reports.ExtentReportManager;
 import reports.TestManager;
 import utils.Configuration;
@@ -28,6 +31,8 @@ import static utils.IConstant.*;
 public class BaseClass {
 	public WebDriver driver;
 	public HomePage homePage;
+	public Renters renters;
+	public Boats boats;
 	Configuration config;
 	protected WebDriverWait wait;
 	ExtentReports extentReports;
@@ -62,9 +67,9 @@ public class BaseClass {
 		long implicitlyWait = Long.parseLong(config.getProperties(IMPLICITLY_WAIT));
 		//long explicitly = Long.parseLong(config.getProperties((EXPLICITLY_WAIT)));
 		initClass();	
-		driver.get(url);
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
+		driver.get(url);
 		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(pageLoadWait));
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(implicitlyWait));
 		//wait = new WebDriverWait(driver, Duration.ofSeconds(explicitly));
@@ -96,6 +101,8 @@ public class BaseClass {
 	
 	public void initClass() {
 		homePage = new HomePage(driver);
+		renters = new Renters(driver);
+		boats = new Boats(driver);
 	}
 	
 	@AfterMethod

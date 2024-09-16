@@ -6,12 +6,12 @@ import static common.CommonActions.*;
 import baseUtil.BaseClass;
 public class HomePageTest extends BaseClass{
 	
-	@Test(priority = 1, enabled = true)
+	@Test(priority = 1, enabled =false)
 	public void homeoageTitleTest() {
 		homePage.homepageTitle();
 	}
 	
-	@Test(priority = 2, enabled = false)
+	@Test(priority = 2, enabled = true)
 	public void startMyQuoteTest(){
 	    homePage.zipCode();
 		homePage.carLob();
